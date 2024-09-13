@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="output"></p>
+    <script type="text/javascript">
+        const output = document.getElementById("output");
+        output.innerHTML = "Starting loop <br>"; 
+
+        for (let count = 0; count < 10; count++) { 
+            output.innerHTML += "Current count is " + count + "<br>";
+        }
+        output.innerHTML += "Loop stopped!";
+
+        let database = [
+            {
+                username: "admin",
+                password: "admin1234",
+                role: "admin"
+            },
+            {
+                username: "employee",
+                password: "employee1234",
+                role: "employee"
+            }
+        ];
+
+        let usernamePrompt = prompt("What is your username?");
+        let passwordPrompt = prompt("What is your password?");
+
+        if (usernamePrompt === null || passwordPrompt === null) {
+            alert("Login cancelled");
+        } else {
+            function isUserValid(username, password) { 
+                for (let i = 0; i < database.length; i++) {
+                    if (database[i].username === username && database[i].password === password) {
+                        return database[i].role; 
+                    }
+                }
+                return null; 
+            }
+
+            function signIn(username, password) {
+                let role = isUserValid(username, password);
+                if (role) {
+                    if (role === "admin") {
+                        window.location = "admin.html"; 
+                    } else if (role === "employee") {
+                        window.location = "employee.html"; 
+                    }
+                } else {
+                    alert("Wrong credentials");
+                }
+            }
+
+            signIn(usernamePrompt, passwordPrompt);
+        }
+    </script>
+</body>
+</html>

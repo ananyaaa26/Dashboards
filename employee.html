@@ -68,7 +68,7 @@
 
         .card {
             background-color: rgba(255, 255, 255, 0.1);
-            padding: 10px; /* Reduced padding for a more compact layout */
+            padding: 10px;
             border-radius: 8px;
             color: #fff;
             margin-bottom: 15px;
@@ -78,8 +78,8 @@
         .section-title {
             text-align: center;
             color: #fff;
-            margin-bottom: 10px; /* Smaller margin */
-            font-size: 1rem; /* Smaller font size */
+            margin-bottom: 10px;
+            font-size: 1rem;
         }
 
         .btn-consult {
@@ -177,22 +177,6 @@
             color: #fff;
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .profile-info,
-            .stats-box {
-                flex-direction: column;
-            }
-
-            .profile-info img {
-                margin-bottom: 10px;
-            }
-
-            .task-sections {
-                flex-direction: column;
-            }
-        }
-
         /* Task Section Styles */
         .task-list {
             list-style-type: none;
@@ -214,15 +198,24 @@
         .task-sections {
             display: flex;
             gap: 20px;
+            flex-wrap: wrap;
         }
 
         .task-sections .card {
-            flex: 1;
+            flex: 1 1 45%; /* Adjust width to 45% to avoid excessive empty spaces */
+            min-width: 300px; /* Ensure the minimum width for responsiveness */
         }
 
-        /* Spacing for empty areas */
+        /* Ensure equal card heights for better alignment */
+        .card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Remove unnecessary empty areas */
         .empty-space {
-            height: 50px;
+            display: none;
         }
     </style>
 </head>
